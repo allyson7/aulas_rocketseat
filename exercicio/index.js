@@ -13,14 +13,13 @@ app.use(express.urlencoded({ extended: false }))
 app.set('view engine', 'njk')
 
 const logMiddleWare = (req, res, next) => {
-  app.id = req.body.age
   console.log(
-    `HOST: ${req.headers.host} | URL: ${req.url} | METHOD: ${req.method}`
+    `HOST: ${req.headers.host} | URL: ${req.url} | METHOD: ${req.method}| ${req.body.age}`
   )
-  if (app.id =  ) {
-
-  } else {
+  if (typeof req.body.age === 'undefined') {
     return next()
+  } else {
+    return res.redirect('/')
   }
 }
 
