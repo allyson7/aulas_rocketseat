@@ -12,15 +12,13 @@ nunjucks.configure('views', {
 app.use(express.urlencoded({ extended: false }))
 app.set('view engine', 'njk')
 
-const logMiddleWare = (req, res, next) => {
-  console.log(
-    `HOST: ${req.headers.host} | URL: ${req.url} | METHOD: ${req.method}| ${req.body.age}`
-  )
-  if (typeof req.body.age === 'undefined') {
-    return next()
-  } else {
+const checkAgeQueryParam = (req, res, next) => {
+  const { age } = req.query
+
+  if (!age) {
     return res.redirect('/')
   }
+  return next()
 }
 
 app.get('/', (req, res) => {
@@ -28,20 +26,22 @@ app.get('/', (req, res) => {
 })
 
 app.post('/check', (req, res) => {
-  app.id = req.body.age
-  if (app.id > 18) {
-    return res.redirect('/major')
+  const { age } = req.body
+  if (age >= 18) {
+    return res.redirect(`/major?age=${age}`)
   } else {
-    return res.redirect('/minor')
+    return res.redirect(`/minor?age=${age}`)
   }
 })
 
-app.get('/major', logMiddleWare, (req, res) => {
-  return res.send(`Você é maior de idade e possui ${app.id} anos`)
+app.get('/major', checkAgeQueryParam, (req, res) => {
+  const { age } = req.query
+  return res.render('major', { age })
 })
 
-app.get('/minor', logMiddleWare, (req, res) => {
-  return res.send(`Você é menor de idade e possui ${app.id} anos`)
+app.get('/minor', checkAgeQueryParam, (req, res) => {
+  const { age } = req.query
+  return res.render('minor', { age })
 })
 
 app.listen(3000)
