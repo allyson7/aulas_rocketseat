@@ -45,3 +45,4 @@ app.get('/minor', checkAgeQueryParam, (req, res) => {
 })
 
 app.listen(3000)
+// teste
