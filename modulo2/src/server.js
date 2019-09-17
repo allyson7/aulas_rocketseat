@@ -1,6 +1,7 @@
 const express = require('express')
 const session = require('express-session')
 const LokiStore = require('connect-loki')(session)
+// const FileStore = require('session-file-store')(session)
 const nunjucks = require('nunjucks')
 const path = require('path')
 const flash = require('connect-flash')
@@ -20,11 +21,12 @@ class App {
     this.express.use(flash())
     this.express.use(
       session({
-        store: new LokiStore({
-          path: path.resolve(__dirname, '..', 'temp', 'sessions.db')
-        }),
+        name: 'root',
         secret: 'MyAppSecret',
         resave: true,
+        store: new LokiStore({
+          path: path.resolve(__dirname, '..', 'tmp', 'sessions')
+        }),
         saveUninitialized: true
       })
     )
