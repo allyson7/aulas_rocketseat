@@ -1,12 +1,20 @@
 const express = require("express");
+const mongoose = require("mongoose");
 
 class App {
   constructor() {
     this.express = express();
     this.isDev = process.env.NODE_ENV !== "production";
 
+    this.database();
     this.middlewares();
     this.routes();
+  }
+
+  database() {
+    // mongodb://usuario:senha@localhost:27017/nomedatabase
+
+    mongoose.connect("mongodb://localhost:27017/gonode03");
   }
 
   middlewares() {

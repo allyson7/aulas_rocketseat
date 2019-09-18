@@ -1,8 +1,1 @@
-pgadmin 4
-yarn add bcryptjs
-yarn add multer
-yarn add express-session
-yarn add connect-loki
-yarn add connect-flash
-yarn add session-file-store
-yarn add moment
+yarn add mongoose
