@@ -1,1 +1,17 @@
-yarn add mongoose
+yarn add mongoose // ORM bancos relacionais
+yarn add bcryptjs
+
+install insomnia
+
+yarn add jsonwebtoken
+
+yarn add requiere-dir 
+
+yarn add mongoose-paginate
+
+yarn add nodemailer
+
+yarn add nodemailer-express-handlebars express-handlebars
+
+sudo docker run --name noderedis -p 6379:6379 -d -t redis:alpine
+yarn add kue
