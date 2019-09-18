@@ -4,7 +4,7 @@ class SchedulleController {
   async index (req, res) {
     const providers = await User.findAll({ where: { provider: true } })
 
-    return res.render('schedule', { providers })
+    return res.render('schedule/index', { providers })
   }
 }
 

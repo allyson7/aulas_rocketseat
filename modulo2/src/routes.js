@@ -35,10 +35,11 @@ routes.get('/app/logout', SessionController.destroy)
 routes.use('/app', authMiddleware)
 
 routes.get('/app/dashboard', DashboardController.index)
-routes.get('/app/schedule/:provider', ScheduleController.index)
 
 routes.get('/app/appointments/new/:provider', AppointmentController.create)
 routes.post('/app/appointments/new/:provider', AppointmentController.store)
 routes.get('/app/available/:provider', AvailableController.index)
+
+routes.get('/app/schedule/', ScheduleController.index)
 
 module.exports = routes
