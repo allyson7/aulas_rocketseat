@@ -14,4 +14,17 @@ yarn add nodemailer
 yarn add nodemailer-express-handlebars express-handlebars
 
 sudo docker run --name noderedis -p 6379:6379 -d -t redis:alpine
+sudo docker start noderedis
 yarn add kue
+
+yarn add joi
+
+yarn add express-validation
+
+yarn add youch
+
+yarn add express-async-handler
+
+yarn add @sentry/node      
+
+yarn add dotenv  
