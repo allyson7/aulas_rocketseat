@@ -1,3 +1,17 @@
 npm install react react-dom
 npm install -D @babel/core @babel/preset-env @babel/preset-react babel-loader webpack webpack-cli
 
+npm install -D webpack-dev-server
+
+npm install prop-types
+
+npm install -D @babel/plugin-proposal-class-properties
+
+npm install style-loader css-loader -D
+
+npm install -D sass-loader node-sass
+
+npm install eslint -D
+npx eslint --init
+
+npm install babel-eslint -D
