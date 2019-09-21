@@ -1,0 +1,3 @@
+yarn global add create-react-app
+
+yarn add redux react-redux
