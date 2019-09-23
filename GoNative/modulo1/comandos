@@ -1,0 +1,15 @@
+react-native init nomedoprojeto
+
+//na pasta do projeto
+react-native run-android
+
+// running metro server | iniciar o package
+react-native start
+
+// iniciar package removendo todo cache
+react-native start --reset-cache
+
+-dev menu
+enable live reload
+
+yarn add prop-types
