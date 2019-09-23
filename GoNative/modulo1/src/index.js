@@ -5,7 +5,7 @@ import Todo from './components/Todo';
 
 export default class App extends Component {
   state = {
-    usuario: 'Diego',
+    usuário: 'Diego',
     todos: [{id: 0, text: 'Fazer café'}, {id: 1, text: 'Estudar GoNative '}],
   };
 
