@@ -13,3 +13,22 @@ react-native start --reset-cache
 enable live reload
 
 yarn add prop-types
+
+yarn add reactotron-react-native
+
+yarn add @react-native-community/async-storage
+
+yarn add babel-eslint -D  
+
+yarn add react-devtools --dev    
+
+yarn add babel-plugin-root-import -D
+
+yarn add eslint-import-resolver-babel-plugin-root-import
+
+--eslintrc.json
+"setting":{
+  "import/resolver":{
+    "babel-plugin-root-import":{}
+  }
+}

@@ -1,24 +1,24 @@
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import {View, Text, StyleSheet} from 'react-native';
 
-export default class Todo extends Component {
-  static defaultProps = {
-    title: 'Todo padrão',
-  };
+const Todo = ({title}) => (
+  <View>
+    <Text>{title}</Text>
+  </View>
+);
 
-  static propTypes = {
-    title: PropTypes.string,
-  };
+Todo.defaultProps = {
+  title: 'Todo padrão',
+};
 
-  render() {
-    return (
-      <View>
-        <Text>{this.props.title}</Text>
-      </View>
-    );
-  }
-}
+Todo.propTypes = {
+  title: PropTypes.string,
+};
 
 const styles = StyleSheet.create({});
+
+export default Todo;
+// stateless components são componentes que não possuem estado nem ciclo de vidas
+// stateful components são componentes que tem estado e métodos de ciclos de vida
