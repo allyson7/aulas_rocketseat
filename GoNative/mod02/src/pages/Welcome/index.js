@@ -14,7 +14,7 @@ import {
 import styles from './styles';
 
 export default class Welcome extends Component {
-  static protoTypes = {
+  static propTypes = {
     navigation: PropTypes.shape({
       navigate: PropTypes.func,
     }).isRequired,
