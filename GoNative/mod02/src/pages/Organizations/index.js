@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 
 import {View, FlatList, ActivityIndicator} from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import PropTypes from 'prop-types';
+
+import api from '~/services/api';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import styles from './styles';
 import Header from '~/components/Header';
-import api from '~/services/api';
-
 import OrganizationItem from './OrganizationItem';
 
 import AsyncStorage from '@react-native-community/async-storage';
@@ -43,7 +43,7 @@ export default class Organizations extends Component {
     this.setState({data, loading: false, refreshing: false});
   };
 
-  renderListItem = ({item}) => <OrganizationItem organizations={item} />;
+  renderListItem = ({item}) => <OrganizationItem organization={item} />;
 
   renderList = () => {
     const {data, refreshing} = this.state;
@@ -54,6 +54,8 @@ export default class Organizations extends Component {
         keyExtractor={item => String(item.id)}
         renderItem={this.renderListItem}
         onRefresh={this.loadOrganizations}
+        numColumns={2}
+        columnWrapperStyle={styles.columnWrapper}
         refreshing={refreshing}
       />
     );
