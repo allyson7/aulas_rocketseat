@@ -8,14 +8,4 @@ module.exports = {
       },
     ],
   ],
-  env: {
-    production: {
-      plugins: [
-        'babel-plugin-root-import',
-        {
-          rootPathSuffix: 'src',
-        },
-      ],
-    },
-  },
 };
