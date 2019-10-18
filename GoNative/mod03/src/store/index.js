@@ -1,13 +1,13 @@
 import {createStore} from 'redux';
 
-// Reducers
+// Reducers responsável por armazenar e manipular dados no state do redux (estado global)
 const INITIAL_STATE = [
-  'Fazer café',
-  'Estudar react native',
-  'entender o Redux',
+  {id: 1, text: 'Fazer café', completed: false},
+  {id: 2, text: 'Estudar react native', completed: true},
+  {id: 3, text: 'entender o Redux', completed: false},
 ];
 
-// Actions
+// Actions - ações que quer realizar dentro do reducer, do state
 
 // Adicionar um todo
 // Marcar todo como completo
@@ -16,9 +16,17 @@ const INITIAL_STATE = [
 // { type: 'MARK_AS_COMPLETED', id: 3 }
 
 function reducer(state = INITIAL_STATE, action) {
-  console.log(action);
-
-  return state;
+  switch (action.type) {
+    case 'ADD_TODO':
+      return [
+        ...state,
+        {id: Math.random(), text: action.text, completed: false},
+      ];
+    case 'MARK_AS_COMPLETED':
+      return state;
+    default:
+      return state;
+  }
 }
 
 const store = createStore(reducer);
