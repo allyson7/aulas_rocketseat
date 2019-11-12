@@ -1,38 +1,24 @@
-import {createStore} from 'redux';
+import { createStore, compose, applyMiddleware } from 'redux';
+import createSagaMiddleware from 'redux-saga';
 
-// Reducers responsável por armazenar e manipular dados no state do redux (estado global)
-const INITIAL_STATE = [
-  {id: 1, text: 'Fazer café', completed: false},
-  {id: 2, text: 'Estudar react native', completed: true},
-  {id: 3, text: 'entender o Redux', completed: false},
-];
+import rootReducer from './reducers';
+import rootSaga from './sagas';
 
-// Actions - ações que quer realizar dentro do reducer, do state
+const middlewares = [];
 
-// Adicionar um todo
-// Marcar todo como completo
+const sagaMiddlewares = createSagaMiddleware();
 
-// { type: 'ADD_TODO', text: 'Novo todo'}
-// { type: 'MARK_AS_COMPLETED', id: 3 }
+middlewares.push(sagaMiddlewares);
 
-function reducer(state = INITIAL_STATE, action) {
-  switch (action.type) {
-    case 'ADD_TODO':
-      return [
-        ...state,
-        {id: Math.random(), text: action.payload.text, completed: false},
-      ];
-    case 'MARK_AS_COMPLETED':
-      return state.map(todo =>
-        todo.id === action.payload.id
-          ? {...todo, completed: !todo.completed}
-          : todo,
-      );
-    default:
-      return state;
-  }
-}
+const composer = __DEV__
+  ? compose(
+    applyMiddleware(...middlewares),
+    console.tron.createEnhancer(),
+  )
+  : applyMiddleware(...middlewares);
 
-const store = createStore(reducer);
+const store = createStore(rootReducer, composer);
+
+sagaMiddlewares.run(rootSaga);
 
 export default store;
